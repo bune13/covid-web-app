@@ -1,0 +1,98 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-lg-3 col-md-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 left-global-each-container give_height-datatable p-4">
+
+            <h3>Quick Facts</h3>
+
+            <ngx-charts-number-card [view]="view_totalcases" [scheme]="colorScheme" [results]="top6countries_totalcase" [cardColor]="cardColor_totalcases"
+              (select)="onSelect($event)">
+            </ngx-charts-number-card>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-md-12">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12 right-global-each-container give_height-datatable p-4">
+
+            <h3>
+              Global Stats
+            </h3>
+
+            <div class="right-inner-addon">
+              <i class="fa fa-search"></i>
+              <input type="search" class="form-control" placeholder="Search Country" (keyup)="updateFilter($event)" />
+            </div>
+
+            <ngx-datatable class="bootstrap" style="height: 400px" [rows]="covid_global" [columnMode]="'force'"
+              [headerHeight]="50" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [limit]="200"
+              [sorts]="[{prop: 'cases', dir: 'desc'}]">
+
+              <ngx-datatable-column name="Place" [sortable]=true prop="place">
+                <ng-template let-row="row" let-value="place" ngx-datatable-cell-template>
+                  {{row.place}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Cases" [sortable]=true prop="cases">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row.cases | number}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="New Cases" [sortable]=true prop="new_cases">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row.new_cases | number}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Total Cases" [sortable]=true prop="total_cases">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row.total_cases | number}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Deaths" [sortable]=true prop="deaths">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row.deaths | number}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="New Deaths" [sortable]=true prop="new_deaths">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row.new_deaths | number}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Total Deaths" [sortable]=true prop="total_deaths">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row.total_deaths | number}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Recovered" [sortable]=true prop="recovered">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row.recovered | number}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-footer></ngx-datatable-footer>
+
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
